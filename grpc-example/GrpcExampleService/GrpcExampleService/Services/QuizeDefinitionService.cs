@@ -37,7 +37,19 @@ namespace GrpcExampleService
       {
         Id = 19,
         Name = "Bla bla quize",
-        Description = "some more bla bla "
+        Description = "some more bla bla ",
+        QuestionList =
+        {
+          new QuestionMessage { Id=21, Text="question1"},
+          new QuestionMessage {
+            Id=23,
+            Text="question3",
+            Answers={
+              {true,"this is good" },
+              { false, "this is not so good"}
+            }
+          },
+        }
       };
       return Task.FromResult(result);
     }

@@ -23,9 +23,16 @@ message QuizeMessage{
     int64 id =1;
     string name=2;
     string description =3;
+    repeated QuestionMessage QuestionList =4;
+}
+
+message QuestionMessage{
+    int64 id = 1;
+    string text =2;
 }
 
 // The response message containing the greetings.
 message HelloReply {
   string message = 1;
+  
 }

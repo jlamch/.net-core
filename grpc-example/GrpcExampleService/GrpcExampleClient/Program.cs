@@ -15,11 +15,8 @@ namespace GrpcExampleClient
       var client = new QuizeDefinition.QuizeDefinitionClient(channel);
       var request = new QuizeIdMessage { Id = 1 };
       var reply = client.GetQuizeByID(request);
-      //var client = new CreditRatingCheck.CreditRatingCheckClient(channel);
-      //var creditRequest = new CreditRequest { CustomerId = "id0201", Credit = 7000 };
-      //var reply = await client.CheckCreditRequestAsync(creditRequest);
 
-      Console.WriteLine($"{reply.Id}, {reply.Name}, {reply.Description}");
+      Console.WriteLine($"{reply.Id}, {reply.Name}, {reply.Description}, {reply.QuestionList?.Count}");
       Console.WriteLine("Press any key to exit...");
       Console.ReadKey();
     }
