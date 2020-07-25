@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcExampleService";
+
+package johoot;
+
+// The greeting service definition.
+service QuizeDefinition {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc GetQuizeByID (QuizeIdMessage) returns (QuizeMessage);
+  rpc CreateQuize (QuizeMessage) returns (QuizeIdMessage);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+message QuizeIdMessage{
+  int64 id = 1;
+}
+
+message QuizeMessage{
+    int64 id =1;
+    string name=2;
+    string description =3;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
