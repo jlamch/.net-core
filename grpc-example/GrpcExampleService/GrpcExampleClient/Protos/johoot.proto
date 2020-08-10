@@ -9,6 +9,7 @@ service QuizeDefinition {
   rpc SayHello (HelloRequest) returns (HelloReply);
   rpc GetQuizeByID (QuizeIdMessage) returns (QuizeMessage);
   rpc CreateQuize (QuizeMessage) returns (QuizeIdMessage);
+  rpc GetQuizeList (QuizeIdMessage) returns (stream QuizeMessage);
 }
 
 // The request message containing the user's name.

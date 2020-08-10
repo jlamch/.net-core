@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Google.Protobuf.Collections;
+using Grpc.Core;
 using Grpc.Net.Client;
 using GrpcExampleService;
 using System;
@@ -9,7 +10,7 @@ namespace GrpcExampleClient
 {
   class Program
   {
-    static void Main(string[] args)
+    static async System.Threading.Tasks.Task Main(string[] args)
     {
       Console.WriteLine("Hello World!");
 
@@ -40,6 +41,18 @@ namespace GrpcExampleClient
 
 
       Console.WriteLine($"{reply.Id}, {reply.Name}, {reply.Description}, {reply.QuestionList?.Count}");
+
+      var quizeItems = new List<QuizeMessage>();
+      using (var call = client.GetQuizeList(request))
+      {
+        while (await call.ResponseStream.MoveNext())
+        {
+          var item = call.ResponseStream.Current;
+          quizeItems.Add(item);
+          Console.WriteLine($"{item.Id}, {item.Name}, {item.Description}, {item.QuestionList?.Count}");
+        }
+      }
+
       Console.WriteLine("Press any key to exit...");
       Console.ReadKey();
     }
