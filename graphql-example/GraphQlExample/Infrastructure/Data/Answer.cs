@@ -1,4 +1,4 @@
-﻿namespace GraphQlExample.Data
+﻿namespace Infrastructure.Data
 {
   public class Answer
   {

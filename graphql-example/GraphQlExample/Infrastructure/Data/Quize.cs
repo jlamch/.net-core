@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GraphQlExample.Data
+namespace Infrastructure.Data
 {
   public class Quize
   {
