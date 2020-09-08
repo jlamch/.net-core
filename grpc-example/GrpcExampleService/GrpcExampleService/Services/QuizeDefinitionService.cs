@@ -1,3 +1,4 @@
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -53,6 +54,12 @@ namespace GrpcExampleService
         }
       };
       return Task.FromResult(result);
+    }
+
+    public override Task<Empty> DeleteQuize(QuizeIdMessage request, ServerCallContext context)
+    {
+      //…code to delete a customer…
+      return Task.FromResult(new Empty());
     }
 
     public override async Task GetQuizeList(

@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
 option csharp_namespace = "GrpcExampleService";
 
 package johoot;
@@ -10,6 +13,8 @@ service QuizeDefinition {
   rpc GetQuizeByID (QuizeIdMessage) returns (QuizeMessage);
   rpc CreateQuize (QuizeMessage) returns (QuizeIdMessage);
   rpc GetQuizeList (QuizeIdMessage) returns (stream QuizeMessage);
+  rpc DeleteQuize (QuizeIdMessage) returns (google.protobuf.Empty);
+
 }
 
 // The request message containing the user's name.
